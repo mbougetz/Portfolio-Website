@@ -1,38 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Milo Bougetz-Aulbach | Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
     <header>
         <h1>Milo Bougetz-Aulbach</h1>
         <h2>Software Engineer</h2>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#resume">Resume</a></li>
+                <li><a class="nav_button" id="home_button" href="#home">Home</a></li>
+                <li><a class="nav_button" id="projects_button" href="#projects">Projects</a></li>
+                <li><a class="nav_button" id="resume_button" href="#resume">Resume</a></li>
+                <li><a class="nav_button" id="contact_button" href="#contact">Contact Me</a></li>
                 <li><a href="https://github.com/mbougetz" target="_blank">GitHub</a></li>
             </ul>
         </nav>
     </header>
-    <section id="home">
 
-        <h3></h3>
-    </section>
-    <section id="projects">
-
-        <h3></h3>
-    </section>
-    <section id="resume">
+    <section class="page" id="home">
+        <h3>Bio:</h3>
 
     </section>
+
+    <section class="page" id="projects" hidden="true">
+        <h3>Projects:</h3>
+
+    </section>
+
+    <section class="page" id="resume" hidden="true">
+        <h3>Resume:</h3>
+        <div class="controls">
+            <button id="download-button">Download</button>
+            <button id="print-button">Print</button>
+        </div>
+        <div id="pdf-viewer"></div>
+        
+    </section>
+
+    <section class="page" id="contact" hidden="true">
+        <h3>Contact:</h3>
+
+    </section>
+
     <footer>
         <p>&copy; 2024 Milo Bougetz-Aulbach. All rights reserved.</p>
     </footer>
     <script src="js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.5.141/pdf.min.js"></script>
 </body>
 </html>
