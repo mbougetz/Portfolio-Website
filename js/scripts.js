@@ -1,22 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Document loaded'); 
 
-    const resume_url = "assets/Resume.pdf"; // Replace with the path to your PDF
+    const resume_url = "assets/Resume.pdf";
     const default_resume_filename = "Milo-Bougetz-Aulbach-Resume.pdf";
+    const repo_name = "/Portfolio-Website/";
 
     //Sets the base url according to the environment
     var base = document.createElement('base');
     var isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    base.href = isLocal ? '/' : '/Portfolio-Website/';
+    base.href = isLocal ? '/' : repo_name;
     document.head.appendChild(base);
 
-     // Handle initial hash
+    //Handle initial hash
     if (window.location.hash) {
         const targetId = window.location.hash.substring(1); // Remove '#'
         document.querySelector(`#${targetId}`)?.scrollIntoView();
     }
 
-    // Handle hash changes
+    //Handle hash changes
     window.addEventListener("hashchange", () => {
         const targetId = location.hash.substring(1); // Remove '#'
         document.querySelector(`#${targetId}`)?.scrollIntoView();
@@ -57,6 +58,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         });
     }
+
+    //Loads the correct page based on current URL fragment on DOM load
+    let fragment = window.location.hash.substring(1);
+    let init_page = document.getElementById(fragment + "_button");
+    init_page.click();
 
     //Displays resume
     const pdfjsLib = window['pdfjs-dist/build/pdf'];
