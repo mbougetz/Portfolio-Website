@@ -1,8 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Document loaded'); 
 
-    const resume_url = "/assets/Resume.pdf"; // Replace with the path to your PDF
+    const resume_url = "assets/Resume.pdf"; // Replace with the path to your PDF
     const default_resume_filename = "Milo-Bougetz-Aulbach-Resume.pdf";
+
+     // Handle initial hash
+    if (window.location.hash) {
+        const targetId = window.location.hash.substring(1); // Remove '#'
+        document.querySelector(`#${targetId}`)?.scrollIntoView();
+    }
+
+    // Handle hash changes
+    window.addEventListener("hashchange", () => {
+        const targetId = location.hash.substring(1); // Remove '#'
+        document.querySelector(`#${targetId}`)?.scrollIntoView();
+    });
+
 
     //Add functionality to the nav buttons to show/hide the corresponding pages
     let nav_buttons = document.getElementsByClassName("nav_button");
@@ -42,21 +55,21 @@ document.addEventListener('DOMContentLoaded', function() {
     //Displays resume
     const pdfjsLib = window['pdfjs-dist/build/pdf'];
     pdfjsLib.getDocument(resume_url).promise.then(function(pdf) {
-        // Fetch the first page
+        //Get the first page
         pdf.getPage(1).then(function(page) {
             const scale = 1.5;
             const viewport = page.getViewport({ scale: scale });
 
-            // Prepare canvas using PDF page dimensions
+            //Set canvas dimension according to page layout
             const canvas = document.createElement('canvas');
             const context = canvas.getContext('2d');
             canvas.height = viewport.height;
             canvas.width = viewport.width;
 
-            // Append canvas to the container
+            //Add canvas to the resume viewer section
             document.getElementById('pdf-viewer').appendChild(canvas);
  
-            // Render PDF page into canvas context
+            //Render resume PDF
             const renderContext = {
                 canvasContext: context,
                 viewport: viewport
