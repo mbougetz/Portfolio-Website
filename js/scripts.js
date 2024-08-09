@@ -61,8 +61,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //Loads the correct page based on current URL fragment on DOM load
     let fragment = window.location.hash.substring(1);
-    let init_page = document.getElementById(fragment + "_button");
-    init_page.click();
+    if(fragment.length != 0){
+        let init_page = document.getElementById(fragment + "_button");
+        init_page.click();
+    }
+    
 
     //Displays resume
     const pdfjsLib = window['pdfjs-dist/build/pdf'];
