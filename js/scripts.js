@@ -59,11 +59,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    //!!!!!!!!!!!!!! init_page is null on page first load and resume doesn't load until the page is reloaded
+
     //Loads the correct page based on current URL fragment on DOM load
     let fragment = window.location.hash.substring(1);
     if(fragment.length != 0){
         let init_page = document.getElementById(fragment + "_button");
-        init_page.click();
+        if(init_page != null) init_page.click();
     }
     
 
