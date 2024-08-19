@@ -13,13 +13,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //Handle initial hash
     if (window.location.hash) {
-        const targetId = window.location.hash.substring(1); // Remove '#'
+        const targetId = window.location.hash.substring(1); //Remove '#'
         document.querySelector(`#${targetId}`)?.scrollIntoView();
     }
 
     //Handle hash changes
     window.addEventListener("hashchange", () => {
-        const targetId = location.hash.substring(1); // Remove '#'
+        const targetId = location.hash.substring(1); //Remove '#'
         document.querySelector(`#${targetId}`)?.scrollIntoView();
     });
 
