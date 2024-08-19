@@ -87,7 +87,31 @@
 
     <section class="page" id="contact" hidden="true">
         <h3>Contact:</h3>
+        <form id="contactForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
 
+            <br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <br>
+
+            <label for="message">Message:</label>
+            
+            <br>
+
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <br>
+
+            <button type="submit">Send</button>
+        </form>
+
+        <br>
+
+        <div id="responseMessage"></div>
     </section>
 
     <footer>
@@ -95,5 +119,6 @@
     </footer>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.5.141/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </body>
 </html>

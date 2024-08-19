@@ -110,5 +110,32 @@ document.addEventListener('DOMContentLoaded', function() {
         link.click();
     });
 
-    
+    //Initialize EmailJS
+    emailjs.init("W-kPSoT9RxGzCts70");
+
+    //Handle form submission
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        //Prevent the default form submission
+        event.preventDefault(); 
+
+        const form = event.target;
+        const formData = new FormData(form);
+        const data = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            message: formData.get('message')
+        };
+
+        //Send email 
+        emailjs.send('service_2s1ecpl', 'template_y7psd2t', data)
+            .then(response => {
+                document.getElementById('responseMessage').innerText = 'Message sent successfully!';
+                //Reset form fields upon successful send
+                form.reset(); 
+            })
+            .catch(error => {
+                document.getElementById('responseMessage').innerText = 'Failed to send message.';
+                console.error('Error sending email:', error);
+            });
+    });
 });

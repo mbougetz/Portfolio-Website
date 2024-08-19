@@ -28,3 +28,8 @@ section {
     margin: 0 auto;
     max-width: 800px;
 }
+
+#message {
+    height: 200px;
+    width: 800px;
+}
